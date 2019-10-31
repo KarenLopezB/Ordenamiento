@@ -8,7 +8,8 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <ListBox Name="lstNumeros" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="175"/>
-        <Button x:Name="lstOrdenar" Content="Ordenar" HorizontalAlignment="Left" Margin="199,10,0,0" VerticalAlignment="Top" Width="75" Click="LstOrdenar_Click"/>
+        <Button x:Name="lstOrdenar" Content="Ordenar Shell" HorizontalAlignment="Left" Margin="198,19,0,0" VerticalAlignment="Top" Width="184" Click="LstOrdenar_Click"/>
+        <Button x:Name="btnBubble" Content="Ordenar Bubble" HorizontalAlignment="Left" Margin="199,67,0,0" VerticalAlignment="Top" Width="183" Click="BtnBubble_Click"/>
 
     </Grid>
 </Window>

@@ -23,45 +23,62 @@ namespace Ordenamiento
     {
         ObservableCollection<int> miLista =
             new ObservableCollection<int>();
+        ObservableCollection<Alumno> alumnos =
+            new ObservableCollection<Alumno>();
         public MainWindow()
         {
             InitializeComponent();
-            miLista.Add(21);
-            miLista.Add(34);
-            miLista.Add(76);
-            miLista.Add(44);
-            miLista.Add(2);
-            miLista.Add(18);
-            miLista.Add(56);
-            miLista.Add(13);
+            miLista.Add(58);
+            miLista.Add(35);
+            miLista.Add(20);
+            miLista.Add(16);
+            miLista.Add(14);
+            miLista.Add(12);
+            miLista.Add(60);
+            miLista.Add(4);
 
-            lstNumeros.ItemsSource = miLista;
+            alumnos.Add(
+                new Alumno("José", 9.1f, 2));
+            alumnos.Add(
+                new Alumno("María", 9.8f, 0));
+            alumnos.Add(
+                new Alumno("Pedro", 6.4f, 14));
+            alumnos.Add(
+                new Alumno("Ana", 8.5f, 4));
+            alumnos.Add(
+                new Alumno("Juan", 9.5f, 1));
+
+            lstNumeros.ItemsSource = alumnos;
+
+            //lstNumeros.ItemsSource = miLista;
         }
 
         private void LstOrdenar_Click(object sender, RoutedEventArgs e)
         {
-            /* var temp = miLista[0];
+            /*var temp = miLista[0];
+            miLista[0] = miLista[3];
+            miLista[3] = temp;*/
 
-             miLista[0] = miLista[3];
-            miLista[3] = temp; */
+            int gap, i, j;
+            gap = alumnos.Count / 2;
 
-            int gap, temp, i, j;
-            gap = miLista.Count / 2;
-
-            while(gap > 0)
+            while (gap > 0)
             {
-                for(i=0; i<miLista.Count; i++)
+                for (i = 0; i < alumnos.Count; i++)
                 {
-                    if (gap + i < miLista.Count && miLista[i] > miLista[gap + i])
+                    if (gap + i < alumnos.Count &&
+                        alumnos[i].Promedio > alumnos[gap + i].Promedio)
                     {
-                        temp = miLista[i];
-                        miLista[i] = miLista[gap + i];
-                        miLista[gap + i] = temp;
+                        var temp = alumnos[i];
+                        alumnos[i] = alumnos[gap + i];
+                        alumnos[gap + i] = temp;
+
                     }
                 }
 
                 gap--;
             }
+
         }
 
         private void BtnBubble_Click(object sender, RoutedEventArgs e)
@@ -70,18 +87,64 @@ namespace Ordenamiento
             do
             {
                 intercambio = false;
-                for (int i=0; i<miLista.Count-1; i++)
+                for (int i = 0; i < alumnos.Count - 1; i++)
                 {
-                    if (miLista[i]>miLista[i+1])
+                    if (alumnos[i].Promedio > alumnos[i + 1].Promedio)
                     {
-                        int temp = miLista[i];
-                        miLista[i] = miLista[i + 1];
-                        miLista[i + 1] = temp;
+                        var temp = alumnos[i];
+                        alumnos[i] = alumnos[i + 1];
+                        alumnos[i + 1] = temp;
                         intercambio = true;
                     }
                 }
+            } while (intercambio);
+        }
+
+        private void BtnShellFaltas_Click(object sender, RoutedEventArgs e)
+        {
+            int gap, i, j;
+            gap = alumnos.Count / 2;
+
+            while (gap > 0)
+            {
+                for (i = 0; i < alumnos.Count; i++)
+                {
+                    if (gap + i < alumnos.Count &&
+                        alumnos[i].Faltas > alumnos[gap + i].Faltas)
+                    {
+                        var temp = alumnos[i];
+                        alumnos[i] = alumnos[gap + i];
+                        alumnos[gap + i] = temp;
+
+                    }
+                }
+
+                gap--;
             }
-            while (intercambio);
+
+        }
+
+
+        private void BtnBubbleFaltas_Click(object sender, RoutedEventArgs e)
+        {
+            bool intercambio = false;
+            do
+            {
+                intercambio = false;
+                for (int i = 0; i < alumnos.Count - 1; i++)
+                {
+                    if (alumnos[i].Faltas > alumnos[i + 1].Faltas)
+                    {
+                        var temp = alumnos[i];
+                        alumnos[i] = alumnos[i + 1];
+                        alumnos[i + 1] = temp;
+                        intercambio = true;
+                    }
+                }
+            } while (intercambio);
         }
     }
+
+       
 }
+    

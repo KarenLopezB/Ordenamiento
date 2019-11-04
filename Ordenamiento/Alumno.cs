@@ -14,7 +14,8 @@ namespace Ordenamiento
 
         public Alumno(
             string nombre,
-            float promedio, int faltas)
+            float promedio, 
+            int faltas)
         {
             this.Nombre = nombre;
             this.Promedio = promedio;
@@ -26,7 +27,11 @@ namespace Ordenamiento
             return this.Nombre +
                 "(" + this.Promedio.ToString() +
                 ")";
+            _ = Nombre +
+                 "(" + this.Faltas.ToString() +
+                 ")";
         }
+       
     }
 }
-}
+
